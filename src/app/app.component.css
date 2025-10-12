@@ -1,0 +1,38 @@
+h1{
+    color:blue;
+}
+.navbar-nav .nav-link {
+  font-size: 22px; /* o el tamaño que desees */
+  font-weight: bold;
+  color: #000000; /* Cambia a tu color preferido */
+  /*transition: color 0.3s ease, background-color 0.3s ease;*/
+}
+
+.navbar-nav .nav-link:hover {
+  color: #000000; /* Dorado como ejemplo */
+  /*background-color: rgba(255, 255, 255, 0.1); /* Efecto suave */
+  border-radius: 4px; /* Opcional: esquinas redondeadas */
+  padding: 5px 10px; /* Para que el fondo se note más */
+}
+
+.navbar-nav .nav-link.active-link {
+  text-decoration: underline;
+  text-underline-offset: 4px; /* Espaciado visual */
+  /*color: #ffd700; /* Opcional: resalta con color */
+}
+
+/* Estilo cuando se activa una opción del submenu Administrador */
+.active-link.dropdown-item {
+  background-color: #e9ecef;     /* Gris claro */
+  font-weight: 500;
+  /*color: #0d6efd !important;*/
+}
+
+/* Estilo especial para el botón "Administrador" cuando una subruta está activa */
+/*.active-parent {
+  background-color: #dce4f9;     
+  color: #0d6efd !important;
+  font-weight: bold;
+  border-radius: 5px;
+}
+*/

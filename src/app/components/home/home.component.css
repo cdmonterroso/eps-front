@@ -1,0 +1,10 @@
+:host {
+    background-color:rgb(207, 25, 25); 
+    font-family: 'Courier New', 'Courier';
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+  }

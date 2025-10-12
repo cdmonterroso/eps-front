@@ -1,0 +1,42 @@
+<div class="container mt-3">
+    <div class="row mt-3 justify-content-center">
+
+        <div class="col-6">
+            <h2>LISTADO DE USUARIOS: </h2>
+            <br>
+            <form>
+              <button (click)="volver()" type="submit" class="btn btn-secondary btn-block">Regresar</button>
+              <br>
+              <br>
+              <h3>Profesional asignado: {{nombreProfesor}}</h3>
+                <br>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Registro</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Estado</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr *ngFor="let estudiante of estudiantes">
+                        <th scope="row">{{estudiante.username}}</th>
+                        <td>{{estudiante.firstname}}</td>
+                        <td>{{estudiante.lastname}} </td>
+                        <td>{{estudiante.email}} </td>
+                        <td>{{estudiante.estado}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+                <br>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>

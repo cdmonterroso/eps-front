@@ -1,0 +1,77 @@
+<p></p>
+<!--<h1>Detalle de la actividad: {{actividad?.nombre}}</h1>-->
+
+
+<div class="container mt-5">
+    <div class="row mt-5 justify-content-center">
+
+        <div class="col-6">
+            <h2>DETALLE DE LA ACTIVIDAD: </h2>
+            <br>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre: {{actividad?.fullname}}</label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Descripcion: {{actividad?.shortname}}</label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha de inicio: {{ fecha_inicio | date: 'dd/MM/yyyy'}}</label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha de finalización: {{fecha_fin| date: 'dd/MM/yyyy'}}</label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <!--<label for="exampleInputEmail1">Tipo de actividad: {{tipo_actividad?.nombre}}</label>-->
+                    <label for="exampleInputEmail1">Tipo de actividad: Curso</label>
+                </div>
+                <br>
+                <div class="form-group">
+                    <!--<label for="exampleInputEmail1">Docente asignado: {{persona_admin?.registro}} - {{persona_admin?.nombre}} {{persona_admin?.apellido}} </label>-->
+                    <label for="exampleInputEmail1">Profesional asignado: {{nombreProfesor}} </label>
+                </div>
+                <br>
+                
+                
+                <input *ngIf="!asignado" type="text" [(ngModel)]="codigoAsignacion" [ngModelOptions]="{standalone: true}" class="form-control mb-1" placeholder="Ingresa el código para matricular">               
+                <button *ngIf="!asignado" type="submit" (click)="asignarCursoAlEstudiante()" class="btn btn-success btn-block">Asignar Curso</button>
+                <button *ngIf="asignado" class="btn btn-success btn-block">Curso asignado</button>
+                <!--<div class="container">
+                    <p>Curso ID: {{ id_actividad }}</p>
+                    <p>Usuario ID: {{ idUsuarioLogueado }}</p>
+                    <p *ngIf="mensaje">{{ mensaje }}</p>
+                </div>-->
+                <hr>
+                <button type="submit" (click)="volver()" class="btn btn-secondary btn-block me-2 mb-3">Regresar</button>
+                <h3>Listado de estudiantes asignados:</h3>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Registro</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr *ngFor="let estudiante of estudiantes">
+                        <th scope="row">{{estudiante.username}}</th>
+                        <td>{{estudiante.firstname}}</td>
+                        <td>{{estudiante.lastname}} </td>
+                        <td>{{estudiante.email}} </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                <br>
+
+            </form>
+        </div>
+
+
+    </div>
+</div>

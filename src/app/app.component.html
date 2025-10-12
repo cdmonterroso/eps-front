@@ -1,0 +1,121 @@
+<!--<h1>División de Desarrollo Organizacional</h1>-->
+<!--
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/encabezado_ddo.png" class="w-100 d-block" alt="...">
+    </a>
+  </div>
+</nav>
+-->
+
+<!--<img src="https://ddo.usac.edu.gt/wp-content/uploads/2024/03/cropped-dissddo2022_Mesa-de-trabajo-1.png" class="img-fluid" alt="...">-->
+<nav class="navbar bg-body-tertiary p-0">
+  <img src="assets/images/encabezado_ddo.png" class="w-100 d-block" alt="Encabezado DDO">
+</nav>
+
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="text-end w-100">
+      <h2 class="modal-title bg-body-tertiary ">{{registroUsuario }}</h2>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="" >DDO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul 
+        *ngIf="registroUsuario !== null"
+        class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+        </li>
+
+        <li 
+          *ngIf="registroUsuario === 't20060102' || registroUsuario === 't20180110'" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" routerLinkActive="active-parent" [routerLinkActiveOptions]="{ exact: false }" 
+          role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="usuarios" routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true }">Listado de usuarios</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" routerLink="reporteProfesionales" routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true }">Profesionales asignados</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" routerLink="reporteCapacitaciones" routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true}">Estado de estudiantes por capacitación</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" routerLink="reporteCursos" routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true}">Estado de estudiantes por curso</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="actividades" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }">Actividades</a>
+        </li>
+        <li class="nav-item">
+          <!--<a class="nav-link" routerLink="">Inicio</a>-->
+          <a class="nav-link" routerLink="misactividades" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }">Mis actividades</a>
+        </li>
+        
+        <!--
+        <li class="nav-item">
+          <a class="nav-link" routerLink="usuarios" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="admin" routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }">Administrador</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Link</a>
+        </li>
+        -->
+
+      </ul>
+      <!--
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      -->
+
+      <!-- ms-auto agrega un margen automático a la izquierda del botón, empujándolo hacia el extremo derecho del contenedor.
+          me-2 Agrega un margen derecho pequeño (0.5 rem por defecto) al botón 
+    -->
+          
+          <!--*ngIf="registroUsuario === null"-->
+      <button 
+        *ngIf="!logueado"
+        (click)="login()"
+        class="btn btn-outline-success ms-auto" type="button"> 
+        Iniciar sesión
+      </button>
+        <!--*ngIf="registroUsuario !== null"-->
+      <button             
+        *ngIf="logueado"
+        (click)="logout()"
+        class="btn btn-outline-danger" type="button">
+        Cerrar sesión
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+
+<!--- <app-home></app-home> -->
+
+<router-outlet></router-outlet>

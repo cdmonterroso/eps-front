@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <div class="row mt-5 justify-content-center">
+
+        <div class="col-6">
+            <h2>CURSOS </h2>
+                <hr>
+                <button type="submit" (click)="volver()" class="btn btn-secondary btn-block me-2 mb-3">Regresar</button>
+                
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha de inicio</th>
+                        <th scope="col">Fecha de finalización</th>
+                        <th scope="col"> - </th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr *ngFor="let curso of cursos">
+                        <th scope="row">{{curso.fullname}}</th>
+                        <td>{{curso.startdate * 1000 | date: 'dd/MM/yyyy'}}</td>
+                        <td>{{curso.enddate * 1000 | date: 'dd/MM/yyyy'}} </td>
+                        <td> <button type="submit"
+                              [routerLink]="['/reporteCursos', curso.id]"
+                              class="btn btn-success btn-block">Ver estado</button> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <br>
+
+        </div>
+
+    </div>
+</div>
