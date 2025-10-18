@@ -33,6 +33,7 @@ COPY --from=build /app/dist/front /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expone el puerto por defecto de Nginx
+EXPOSE 3091
 EXPOSE 80
 
 # Comando para iniciar Nginx
