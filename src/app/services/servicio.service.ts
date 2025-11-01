@@ -14,7 +14,8 @@ export class ServicioService {
   constructor(private http: HttpClient) { }
   //preURL:string = "http://localhost:4000/"; //LOCAL
   //preURL:string = "http://localhost:3000/"; //DOCKER
-  preURL:string = "http://10.17.1.36:3090/"; //SERVIDOR
+  //preURL:string = "http://10.17.1.36:3090/"; //SERVIDOR
+  preURL:string= "https://back-sidecc-ddo.usac.edu.gt/"; //SERVIDOR
   //GET USUARIOS
   getUsuarios(){
     //const url = this.preURL + "usuario";

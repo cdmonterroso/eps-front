@@ -1,0 +1,12 @@
+export const environment = {
+    production: false,
+    keycloak: {
+      //authority: 'http://10.17.1.36:3092',
+	authority: 'https://ss-ddo.usac.edu.gt'
+      redirectUri: 'http://10.17.1.36:3091',
+      postLogoutRedirectUri: 'http://10.17.1.36:3091/logout',
+      realm: 'ddo',
+      clientId: 'cliente_nodejs',
+    },
+    idleConfig: { idle: 10, timeout: 60, ping: 10 },
+  };

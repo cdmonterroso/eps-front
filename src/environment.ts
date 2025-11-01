@@ -1,9 +1,9 @@
 export const environment = {
     production: false,
     keycloak: {
-      authority: 'http://localhost:8080',
-      redirectUri: 'http://localhost:4200',
-      postLogoutRedirectUri: 'http://localhost:4200/logout',
+      authority: 'https://sso-ddo.usac.edu.gt',
+      redirectUri: 'https://sidecc-ddo.usac.edu.gt',
+      postLogoutRedirectUri: 'https://sidecc-ddo.usac.edu.gt/logout',
       realm: 'ddo',
       clientId: 'cliente_nodejs',
     },

@@ -7,7 +7,7 @@ export function initializeKeycloak(keycloak: KeycloakService): () => Promise<any
       .init({
         config: {
           //url: 'http://localhost:8080', // URL de tu servidor Keycloak
-          url: 'http://10.17.1.36:3092', // URL de tu servidor Keycloak (EN EL SERVIDOR)
+          url: 'https://sso-ddo.usac.edu.gt', // URL de tu servidor Keycloak (EN EL SERVIDOR)
           realm: 'ddo',                 // Nombre de tu realm
           clientId: 'cliente_nodejs',          // ID de tu cliente registrado en Keycloak
         },
