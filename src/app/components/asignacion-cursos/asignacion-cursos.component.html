@@ -1,0 +1,63 @@
+<p> </p>
+
+<div class="container mt-3">
+    <div class="row mt-3 justify-content-center">
+
+        <div class="col-8">
+            <h2>SELECTOR DE CURSOS Y CAPACITACIONES: </h2>
+            <br>
+            <form>
+              <button (click)="volver()" type="submit" class="btn btn-secondary btn-block">Regresar</button>
+              <br>
+              <br>
+
+                <label for="unidad" class="form-label">Unidad Ejecutora</label>
+                <!-- Combobox 1: Unidades Ejecutoras -->
+                <select #selectUnidades class="form-select form-select-lg mb-3" aria-label="Large select example" (change)="onUnidadChange($event)">
+                    <option selected value="0"> -- Seleccione una unidad </option>
+                    <option *ngFor="let unidad of unidades"  value={{unidad.codigo_unidad}}>{{unidad.nombre_unidad}}</option>
+                </select>
+
+                <label for="subprograma" class="form-label">Subprograma</label>
+                <!-- Combobox 2: Subprogramas -->
+                <select #selectSubprogramas class="form-select form-select-lg mb-3" aria-label="Large select example" (change)="onSubprogramaChange($event)">
+                    <option selected value="0"> -- Seleccione un subprograma </option>
+                    <option *ngFor="let subprograma of subprogramas"  value={{subprograma.id_subprograma}}>{{subprograma.nombre_subprograma}}</option>
+                </select>
+
+                <br>
+
+                <label for="actividad" class="form-label">Curso/Capacitación</label>
+                <!-- Combobox 2: Subprogramas -->
+                <select #selectActividades class="form-select form-select-lg mb-3" aria-label="Large select example" (change)="onCursosChange($event)">
+                    <option selected value=""> -- Seleccione un programa de formación </option>
+                    <option *ngFor="let actividad of actividades"  value={{actividad.idnumber}}>{{actividad.fullname}}</option>
+                </select>
+
+                <br>
+                <button *ngIf="!asignacion" type="submit" (click)="asignar()" class="btn btn-success btn-block">Asignar Curso</button>
+                <br>
+                <!-- 
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Registro</th>
+                        <th scope="col">Nombre</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                      <tr *ngFor="let unidad of unidades">
+                        <th scope="row">{{unidad.codigo_unidad}}</th>
+                        <td>{{unidad.nombre_unidad}}</td>
+                      </tr>
+                    </tbody>
+                  </table>-->
+
+                <br>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+

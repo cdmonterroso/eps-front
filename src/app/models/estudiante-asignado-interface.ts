@@ -15,6 +15,8 @@ export interface EstudianteAsignadoInterface {
     roles: UserRole[];
     enrolledcourses: EnrolledCourse[];
     estado: string;
+    unidad: string;
+    subprograma: string;
   }
   
   export interface CustomField {

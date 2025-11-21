@@ -21,6 +21,7 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { ReporteCursosComponent } from './components/reporte-cursos/reporte-cursos.component';
 import { ReporteCapacitacionesComponent } from './components/reporte-capacitaciones/reporte-capacitaciones.component';
 import { ReporteProfesionalesComponent } from "./components/reporte-profesionales/reporte-profesionales.component";
+import { AsignacionCursosComponent } from './components/asignacion-cursos/asignacion-cursos.component';
 //import { MisActividadesComponent } from './mis-actividades/mis-actividades.component';
 
 /* servicio.service, se coloca en providers para hacer que el servicio
@@ -57,7 +58,8 @@ import { ReporteProfesionalesComponent } from "./components/reporte-profesionale
     MisActividadesComponent,
     ReporteCursosComponent,
     ReporteCapacitacionesComponent,
-    ReporteProfesionalesComponent
+    ReporteProfesionalesComponent,
+    AsignacionCursosComponent
   ],
   imports: [
     BrowserModule,

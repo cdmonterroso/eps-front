@@ -39,10 +39,14 @@
         </li>
 
         <li 
-          *ngIf="registroUsuario === 't20060102' || registroUsuario === 't20180110'" class="nav-item dropdown">
+          *ngIf="registroUsuario === 't20060102' || registroUsuario === 't20180110' || registroUsuario === 't20240824' || registroUsuario === 't20150881'" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" routerLinkActive="active-parent" [routerLinkActiveOptions]="{ exact: false }" 
           role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="asignaciones" routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true }">Asignaciones</a></li>
+            <li><hr class="dropdown-divider"></li>
+
             <li><a class="dropdown-item" routerLink="usuarios" routerLinkActive="active-link"
                 [routerLinkActiveOptions]="{ exact: true }">Listado de usuarios</a></li>
             <li><hr class="dropdown-divider"></li>

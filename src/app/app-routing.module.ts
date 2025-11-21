@@ -10,6 +10,7 @@ import { ActividadesComponent } from './components/actividades/actividades.compo
 import { DetalleActividadComponent } from './components/detalle-actividad/detalle-actividad.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { MisActividadesComponent } from "./components/mis-actividades/mis-actividades.component";
+import { AsignacionCursosComponent } from './components/asignacion-cursos/asignacion-cursos.component';
 import { AuthGuard, authGuard } from "./guards/keycloak.guard";
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'reporteProfesionales', component:ReporteProfesionalesComponent, canActivate:[AuthGuard]},
   {path: 'reporteCapacitaciones/:idActividad', component:UsuariosComponent, canActivate:[AuthGuard]},
   {path: 'reporteCursos/:idActividad', component:UsuariosComponent, canActivate:[AuthGuard]},
-
+  {path: 'asignaciones', component: AsignacionCursosComponent, canActivate:[AuthGuard]},
+  
   {path: 'usuarios', component: AdminComponent, canActivate: [AuthGuard]},
   //{path: 'usuario/:idUsuario', component: DetalleUsuarioComponent}, //component: detalleUsuarioComponent
   {path: 'actividades', component: ActividadesComponent, canActivate: [AuthGuard]},

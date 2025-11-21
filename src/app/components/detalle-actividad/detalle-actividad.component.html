@@ -37,7 +37,7 @@
                 <br>
                 
                 
-                <input *ngIf="!asignado" type="text" [(ngModel)]="codigoAsignacion" [ngModelOptions]="{standalone: true}" class="form-control mb-1" placeholder="Ingresa el código para matricular">               
+                <!--<input *ngIf="!asignado" type="text" [(ngModel)]="codigoAsignacion" [ngModelOptions]="{standalone: true}" class="form-control mb-1" placeholder="Ingresa el código para matricular">-->               
                 <button *ngIf="!asignado" type="submit" (click)="asignarCursoAlEstudiante()" class="btn btn-success btn-block">Asignar Curso</button>
                 <button *ngIf="asignado" class="btn btn-success btn-block">Curso asignado</button>
                 <!--<div class="container">

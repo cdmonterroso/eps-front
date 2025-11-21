@@ -102,4 +102,36 @@ export class ServicioService {
     const url = this.preURL + "getEstadoEstudiante";
     return this.http.post(url,body);
   }
+
+
+  // NUEVAS FUNCIONES
+  getUnidades(){
+    const url = this.preURL + "unidades";
+    return this.http.get(url);
+  }
+
+  getSubprogramas(codigoUnidad:number){
+    const url = this.preURL + "unidades/"+ codigoUnidad + "/subprogramas";
+    return this.http.get(url);
+  }
+
+  vincularCurso(idSubprograma:any, codCurso:any){
+    const body = {
+      idSubprograma,
+      codCurso
+    };
+    const url = this.preURL + "vincularCurso";
+    return this.http.post(url,body); //post ya que estoy mandando un cuerpo
+  }
+
+  getVinculoCursoSubprograma(codCurso:any, partida:any, codUnidad:any ){
+    const body = {
+      codCurso,
+      partida,
+      codUnidad
+    };
+    const url = this.preURL + "getVinculoCursoSubprograma";
+    return this.http.post(url,body); //post ya que estoy mandando un cuerpo
+  }
+  
 }
