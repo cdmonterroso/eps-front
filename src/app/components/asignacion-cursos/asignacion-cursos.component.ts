@@ -5,6 +5,7 @@ import { UnidadInterface } from "../../models/unidad-interface";
 import { SubprogramaInterface } from "../../models/subprograma-interface";
 import { AsignacionInterface } from "../../models/asignacion-interface";
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-asignacion-cursos',
@@ -121,34 +122,52 @@ export class AsignacionCursosComponent {
   asignar():void{
     if (this.actividadSeleccionada && this.subprogramaSeleccionado) {
       console.log(`Asignación: ${this.unidadSeleccionada}, ${this.subprogramaSeleccionado}, ${this.actividadSeleccionada}`);
-      this.actividadService.vincularCurso(this.subprogramaSeleccionado, this.actividadSeleccionada).subscribe({
-        next: (res)=>{
-          console.log("Se vinculó el curso correctamente", res); //
-      //this.asignacion = true;
-          const mensaje = (res as { message: string }).message;
-          alert('Se vinculó el curso correctamente' + "\n" + mensaje);
-          if (this.miSelectAct) {
-            // Para "seleccionar" la opción por defecto (value="")
-            this.miSelectAct.nativeElement.value = "";
-            this.actividadSeleccionada = null;
-          }
-          if (this.miSelectSub) {
-            // Para "seleccionar" la opción por defecto (value="0")  
-            this.miSelectSub.nativeElement.value = "0";
-            this.subprogramaSeleccionado = 0;
-            this.subprogramas = [];
-          }
-          if (this.miSelectUni) {
-            // Para "seleccionar" la opción por defecto (value="0")
-            this.miSelectUni.nativeElement.value = "0";
-            this.unidadSeleccionada = 0;
-          }
-        },
-        error: (err)=>{
-          console.error('Error al vincular el curso', err);
-          alert('Error al vincular el curso' + "\n" +err.error.message);
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Estás a punto de asignar esta actividad al subprograma seleccionado.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#198754', // Color success de Bootstrap
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, asignar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+          // 3. AQUÍ LLAMAS A TU SERVICIO (Lo que antes hacías directamente)
+          this.actividadService.vincularCurso(this.subprogramaSeleccionado, this.actividadSeleccionada).subscribe({
+            next: (res)=>{
+              console.log("Se vinculó el curso correctamente", res); //
+          //this.asignacion = true;
+              const mensaje = (res as { message: string }).message;
+              alert('Se vinculó la actividad correctamente' + "\n" + mensaje);
+              if (this.miSelectAct) {
+                // Para "seleccionar" la opción por defecto (value="")
+                this.miSelectAct.nativeElement.value = "";
+                this.actividadSeleccionada = null;
+              }
+              if (this.miSelectSub) {
+                // Para "seleccionar" la opción por defecto (value="0")  
+                this.miSelectSub.nativeElement.value = "0";
+                this.subprogramaSeleccionado = 0;
+                this.subprogramas = [];
+              }
+              if (this.miSelectUni) {
+                // Para "seleccionar" la opción por defecto (value="0")
+                this.miSelectUni.nativeElement.value = "0";
+                this.unidadSeleccionada = 0;
+              }
+            },
+            error: (err)=>{
+              console.error('Error al vincular el curso', err);
+              alert('Error al vincular la actividad' + "\n" +err.error.message);
+            }
+          });
+
         }
       });
+      
     }else{
       alert('Error: Hay campos vacíos que debe seleccionar');
     }

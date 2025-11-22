@@ -9,6 +9,7 @@ import { EstudianteAsignadoInterface } from "../../models/estudiante-asignado-in
 import { ActividadDetalleInterface } from "../../models/actividad-detalle-interface";
 import { ProfesorInterface } from "../../models/profesor-interface";
 import { Location } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalle-actividad',
@@ -155,22 +156,40 @@ export class DetalleActividadComponent implements OnInit {
                   this.consultaVinculo = res as [];
                   if (this.consultaVinculo) {
                     console.log('Este curso está vinculado a la dependencia del trabajador: ', this.consultaVinculo);
-                    this.actividadService.asignarCurso(this.idUsuarioLogueado, this.id_actividad).subscribe({
-                      next: (res)=>{
-                        this.mensaje = 'Curso asignado con éxito.';
-                        this.asignado = true;
-                        console.log("Se asignó el curso correctamente", res); //La respuesta es un null proveniente del back
-                        alert('El curso ha sido asignado correctamente');
-                      },
-                      error: (err)=>{
-                        this.mensaje = 'Hubo un error al asignar el curso.';
-                        this.asignado = true;
-                        console.error(err);
+
+                    Swal.fire({
+                      title: '¿Estás seguro?',
+                      text: "Estás a punto de asignarte a la actividad seleccionada",
+                      icon: 'warning',
+                      showCancelButton: true,
+                      confirmButtonColor: '#198754', // Color success de Bootstrap
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Sí, asignar',
+                      cancelButtonText: 'Cancelar'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        
+                        this.actividadService.asignarCurso(this.idUsuarioLogueado, this.id_actividad).subscribe({
+                          next: (res)=>{
+                            this.mensaje = 'Curso asignado con éxito.';
+                            this.asignado = true;
+                            console.log("Se asignó el curso correctamente", res); //La respuesta es un null proveniente del back
+                            alert('La actividad ha sido asignada correctamente');
+                          },
+                          error: (err)=>{
+                            this.mensaje = 'Hubo un error al asignar el curso en Moodle';
+                            this.asignado = false;
+                            console.error(err);
+                            alert('Error de asignación en Moodle');
+                          }
+                        });
+
                       }
                     });
+                    
                   } else {
                     console.log('Error: este curso no está vinculado a la dependencia del trabajador', this.consultaVinculo);
-                    alert('Error: este curso no está vinculado a la dependencia del trabajador: ');
+                    alert('Error: esta actividad no está vinculada a la dependencia del trabajador: ');
                     return;
                   }
                 },
@@ -219,7 +238,7 @@ export class DetalleActividadComponent implements OnInit {
       */
     } catch (error) {
       console.log('Error, no se establecieron correctamento los parámetros en la configuración del curso');
-      alert('Error, no se establecieron correctamente los parámetros en la configuración del curso' + "\n" + error);
+      alert('Error, no se establecieron correctamente los parámetros en la configuración del curso en Moodle' + "\n" + error);
     }
     
   }

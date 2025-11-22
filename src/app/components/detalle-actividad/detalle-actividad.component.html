@@ -14,7 +14,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Descripcion: {{actividad?.shortname}}</label>
+                    <label for="exampleInputEmail1">Código de la actividad: {{actividad?.idnumber}}</label>
                 </div>
                 <br>
                 <div class="form-group">
@@ -25,11 +25,11 @@
                     <label for="exampleInputEmail1">Fecha de finalización: {{fecha_fin| date: 'dd/MM/yyyy'}}</label>
                 </div>
                 <br>
-                <div class="form-group">
-                    <!--<label for="exampleInputEmail1">Tipo de actividad: {{tipo_actividad?.nombre}}</label>-->
+                <!--<div class="form-group">
+                    <label for="exampleInputEmail1">Tipo de actividad: {{tipo_actividad?.nombre}}</label>
                     <label for="exampleInputEmail1">Tipo de actividad: Curso</label>
                 </div>
-                <br>
+                <br>-->
                 <div class="form-group">
                     <!--<label for="exampleInputEmail1">Docente asignado: {{persona_admin?.registro}} - {{persona_admin?.nombre}} {{persona_admin?.apellido}} </label>-->
                     <label for="exampleInputEmail1">Profesional asignado: {{nombreProfesor}} </label>
@@ -38,8 +38,8 @@
                 
                 
                 <!--<input *ngIf="!asignado" type="text" [(ngModel)]="codigoAsignacion" [ngModelOptions]="{standalone: true}" class="form-control mb-1" placeholder="Ingresa el código para matricular">-->               
-                <button *ngIf="!asignado" type="submit" (click)="asignarCursoAlEstudiante()" class="btn btn-success btn-block">Asignar Curso</button>
-                <button *ngIf="asignado" class="btn btn-success btn-block">Curso asignado</button>
+                <button *ngIf="!asignado" type="submit" (click)="asignarCursoAlEstudiante()" class="btn btn-success btn-block">Asignar actividad</button>
+                <a *ngIf="asignado" class="btn btn-success btn-block" [href]="'https://radd15.virtual.usac.edu.gt/ddo/course/view.php?id=' + actividad?.id" target="_blank">Ir a Moodle</a>
                 <!--<div class="container">
                     <p>Curso ID: {{ id_actividad }}</p>
                     <p>Usuario ID: {{ idUsuarioLogueado }}</p>

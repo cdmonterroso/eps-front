@@ -30,12 +30,12 @@
                 <label for="actividad" class="form-label">Curso/Capacitación</label>
                 <!-- Combobox 2: Subprogramas -->
                 <select #selectActividades class="form-select form-select-lg mb-3" aria-label="Large select example" (change)="onCursosChange($event)">
-                    <option selected value=""> -- Seleccione un programa de formación </option>
+                    <option selected value=""> -- Seleccione una actividad </option>
                     <option *ngFor="let actividad of actividades"  value={{actividad.idnumber}}>{{actividad.fullname}}</option>
                 </select>
 
                 <br>
-                <button *ngIf="!asignacion" type="submit" (click)="asignar()" class="btn btn-success btn-block">Asignar Curso</button>
+                <button *ngIf="!asignacion" type="submit" (click)="asignar()" class="btn btn-success btn-block">Asignar actividad</button>
                 <br>
                 <!-- 
                 <table class="table">
