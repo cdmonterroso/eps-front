@@ -43,10 +43,12 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm install 
+RUN npm ci 
 
 # Copia todo el código fuente de la aplicación
 COPY . .
+
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 # Genera la versión de producción de la aplicación
 RUN npm run build
